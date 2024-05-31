@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "cypress": "^13.10.0",
+    "rgb-hex": "^4.1.0"
+  },
+  "scripts": {
+    "cy:open": "cypress open"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  }
+}

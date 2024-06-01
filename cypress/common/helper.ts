@@ -1,8 +1,6 @@
-import rgbHex from 'rgb-hex';
+import { BaseEnum } from "./base_enum"
 
-export const get_url = () => {
-    return "https://todomvc.com/examples/react/dist/#/active"
-};
+export const get_url = "https://todomvc.com/examples/react/dist/#/active"
 
 export const findElementAndClick = (locator: string ) => {
     cy.get(locator).click()
@@ -16,12 +14,12 @@ export const findElementAndType = (locator: string, value: string) => {
     cy.get(locator).type(value)
 }
 
-export const findElementAndShould = (locator: string, value: string) => {
+export const findElementAndShould = (locator: string, value: BaseEnum) => {
     cy.get(locator).should(value)
 }
 
-export const haveText = (locator: string, text_value: string, val: string) => {
-    cy.get(locator).should("have.text", text_value)
+export const haveText = (locator: string, TextValue: string, val: BaseEnum) => {
+    cy.get(locator).should("have.text", TextValue)
     cy.get(locator).should(val)
 }
 
@@ -34,14 +32,10 @@ export const itemIsVisible = (locator: string) => {
     findElementAndClick(locator)
 }
 
-export const checkCssOfColorOnElement = (locator: string, css_type: string, value: string) => {
-    cy.get(locator)
-    .invoke('css', css_type)
-    .then((item: any) => {
-        expect(rgbHex(item)).to.eq(value)
-    })
+export const checkCssOfColorOnElement = (locator: string, cssType: string, value: string) => {
+    cy.get(locator).should('have.css', cssType, value)
 }
 
-export const checkElementHasNewAttribute = (locator: string, class_value: string) => {
-    cy.get(locator).invoke('attr', 'class').should('contain', class_value)
+export const checkElementHasNewAttribute = (locator: string, classValue: string) => {
+    cy.get(locator).invoke('attr', 'class').should('contain', classValue)
 }

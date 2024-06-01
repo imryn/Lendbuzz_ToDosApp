@@ -13,7 +13,6 @@ export const findElementAndDoubleClick = (locator: string) => {
 }
 
 export const findElementAndType = (locator: string, value: string) => {
-    console.log(locator, value)
     cy.get(locator).type(value)
 }
 

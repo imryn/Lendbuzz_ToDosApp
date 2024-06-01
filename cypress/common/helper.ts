@@ -1,7 +1,5 @@
 import { BaseEnum } from "./base_enum"
 
-export const get_url = "https://todomvc.com/examples/react/dist/#/active"
-
 export const findElementAndClick = (locator: string ) => {
     cy.get(locator).click()
 }

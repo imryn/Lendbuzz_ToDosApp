@@ -1,12 +1,10 @@
 import { TodosPage } from '../pages/todos_page'
 
-import {get_url} from '../common/helper'
-
 const todosPage = new TodosPage()
 
 describe('template spec', () => {
    beforeEach (() => {
-        cy.visit(get_url)
+        cy.visit(Cypress.env('baseUrl'))
     });
 
     it('item is being created and all options fot todos list are being displayed', () => {

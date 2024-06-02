@@ -8,7 +8,7 @@ import {findElementAndClick,
     haveText} 
     from '../common/helper';
 
-import {BaseEnum} from '../common/base_enum';
+import {BaseEnum, Colors, KeyboardKeys} from '../common/baseEnum';
 import {LocatorsForToDo} from '../common/locators';
 
 
@@ -18,7 +18,7 @@ class TodosPage {
     addItemToDoList(): void {
         findElementAndClick(LocatorsForToDo.toDoInput);
         findElementAndType(LocatorsForToDo.toDoInput, this.todoItem);
-        findElementAndType(LocatorsForToDo.toDoInput, '{enter}');
+        findElementAndType(LocatorsForToDo.toDoInput, KeyboardKeys.ENTER);
         findElementAndClick(LocatorsForToDo.allOption);
     }
     
@@ -28,7 +28,7 @@ class TodosPage {
         haveText(LocatorsForToDo.numberOfItems, "1 item left!", BaseEnum.EXIST);
         haveText(LocatorsForToDo.allOption, "All", BaseEnum.EXIST);
         haveText(LocatorsForToDo.activeOption, "Active", BaseEnum.EXIST);
-        checkCssOfColorOnElement(LocatorsForToDo.allOption, 'border-color', 'rgb(206, 70, 70)');
+        checkCssOfColorOnElement(LocatorsForToDo.allOption, 'border-color', Colors.RED);
         haveText(LocatorsForToDo.completedOption, "Completed", BaseEnum.EXIST);
         haveText(LocatorsForToDo.clearCompletedOption, "Clear completed", BaseEnum.EXIST);
     }
@@ -41,19 +41,19 @@ class TodosPage {
             findElementAndDoubleClick(LocatorsForToDo.toDoItemLabel);
             findElementAndShould(LocatorsForToDo.inputContainer, BaseEnum.EXIST);
             findElementAndType(LocatorsForToDo.toDoItemLi, " updated");
-            findElementAndType(LocatorsForToDo.toDoItemLi, "{enter}");
-            haveText(LocatorsForToDo.toDoItemLabel, this.todoItem + " updated", BaseEnum.EXIST);
+            findElementAndType(LocatorsForToDo.toDoItemLi, KeyboardKeys.ENTER);
+            haveText(LocatorsForToDo.toDoItemLabel, `${this.todoItem} updated`, BaseEnum.EXIST);
     }
     
     removeItemFromTodos(): void {
-            hoverAnElement(LocatorsForToDo.item, 'mouseover');
+            hoverAnElement(LocatorsForToDo.item, KeyboardKeys.HOVER);
             itemIsVisible(LocatorsForToDo.deleteIcon);
             findElementAndShould(LocatorsForToDo.toDoItemLi, BaseEnum.NOT_EXIST);
     }
 
     checkElementAsCompleted(): void {
         haveText(LocatorsForToDo.numberOfItems, "1 item left!", BaseEnum.EXIST);
-        hoverAnElement(LocatorsForToDo.itemCheckbox, 'mouseover');
+        hoverAnElement(LocatorsForToDo.itemCheckbox, KeyboardKeys.HOVER);
         findElementAndClick(LocatorsForToDo.itemCheckbox);
         checkElementHasNewAttribute(LocatorsForToDo.toDoItemLi, BaseEnum.COMPLETED);
         findElementAndClick(LocatorsForToDo.completedOption);
@@ -66,7 +66,7 @@ class TodosPage {
     clearTheTodoList(): void {
         findElementAndClick(LocatorsForToDo.allOption);
         findElementAndShould(LocatorsForToDo.toDoItemLi, BaseEnum.EXIST);
-        hoverAnElement(LocatorsForToDo.clearCompletedOption, 'mouseover');
+        hoverAnElement(LocatorsForToDo.clearCompletedOption, KeyboardKeys.HOVER);
         findElementAndClick(LocatorsForToDo.clearCompletedOption);
         findElementAndShould(LocatorsForToDo.toDoItemLi, BaseEnum.NOT_EXIST);
     }

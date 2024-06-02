@@ -1,4 +1,4 @@
-import { BaseEnum } from "./base_enum"
+import { BaseEnum, Colors, KeyboardKeys } from "./baseEnum"
 
 export const findElementAndClick = (locator: string ) => {
     cy.get(locator).click()
@@ -21,7 +21,7 @@ export const haveText = (locator: string, TextValue: string, val: BaseEnum) => {
     cy.get(locator).should(val)
 }
 
-export const hoverAnElement = (locator: string, behaviour: string) => {
+export const hoverAnElement = (locator: string, behaviour: KeyboardKeys) => {
     cy.get(locator).trigger(behaviour)
 }
 
@@ -30,7 +30,7 @@ export const itemIsVisible = (locator: string) => {
     findElementAndClick(locator)
 }
 
-export const checkCssOfColorOnElement = (locator: string, cssType: string, value: string) => {
+export const checkCssOfColorOnElement = (locator: string, cssType: string, value: Colors) => {
     cy.get(locator).should('have.css', cssType, value)
 }
 

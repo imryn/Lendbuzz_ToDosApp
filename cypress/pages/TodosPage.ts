@@ -15,6 +15,7 @@ import {LocatorsForToDo} from '../common/locators';
 class TodosPage {
     private todoItem = "cleaning the house";
 
+    /** add new item to todos list */
     addItemToDoList(): void {
         findElementAndClick(LocatorsForToDo.toDoInput);
         findElementAndType(LocatorsForToDo.toDoInput, this.todoItem);
@@ -22,6 +23,7 @@ class TodosPage {
         findElementAndClick(LocatorsForToDo.allOption);
     }
     
+    /** check that the todos list section has all tab options (displayed only after you add new item) */
     checkOptionsForTodosListSection(): void {
         findElementAndShould(LocatorsForToDo.itemCheckbox, BaseEnum.EXIST);
         findElementAndShould(LocatorsForToDo.toDoListOptions, BaseEnum.EXIST);
@@ -33,10 +35,12 @@ class TodosPage {
         haveText(LocatorsForToDo.clearCompletedOption, "Clear completed", BaseEnum.EXIST);
     }
     
+    /** check the item that was created is exist in the dom and has right text */
     itemCreated(): void {
         haveText(LocatorsForToDo.toDoItemLabel, this.todoItem, BaseEnum.EXIST);
     }
     
+    /** add item to todos list and check you can edit it */
     editTheItem(): void {
             findElementAndDoubleClick(LocatorsForToDo.toDoItemLabel);
             findElementAndShould(LocatorsForToDo.inputContainer, BaseEnum.EXIST);
@@ -45,12 +49,15 @@ class TodosPage {
             haveText(LocatorsForToDo.toDoItemLabel, `${this.todoItem} updated`, BaseEnum.EXIST);
     }
     
+    /**  add item to todos list and remove it by clicking the delete icon */
     removeItemFromTodos(): void {
             hoverAnElement(LocatorsForToDo.item, KeyboardKeys.HOVER);
             itemIsVisible(LocatorsForToDo.deleteIcon);
+            findElementAndClick(LocatorsForToDo.deleteIcon)
             findElementAndShould(LocatorsForToDo.toDoItemLi, BaseEnum.NOT_EXIST);
     }
 
+    /** check if item in todos list is being marked as completed and displayed in the completed tab */
     checkElementAsCompleted(): void {
         haveText(LocatorsForToDo.numberOfItems, "1 item left!", BaseEnum.EXIST);
         hoverAnElement(LocatorsForToDo.itemCheckbox, KeyboardKeys.HOVER);
@@ -63,6 +70,7 @@ class TodosPage {
         findElementAndShould(LocatorsForToDo.toDoItemLi, BaseEnum.NOT_EXIST);
     }
 
+    /** check the clear completed button delete checked items */
     clearTheTodoList(): void {
         findElementAndClick(LocatorsForToDo.allOption);
         findElementAndShould(LocatorsForToDo.toDoItemLi, BaseEnum.EXIST);

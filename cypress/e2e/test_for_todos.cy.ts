@@ -7,7 +7,7 @@ describe('template spec', () => {
         cy.visit(Cypress.env('baseUrl'))
     });
 
-    it('item is being created and all options fot todos list are being displayed', () => {
+    it('item is being created and all options for todos list are being displayed', () => {
         todosPage.addItemToDoList()
         todosPage.itemCreated()
         todosPage.checkOptionsForTodosListSection()

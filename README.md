@@ -1,9 +1,9 @@
 # Lendbuzz test
 
 ## Instructions for installing the project
-1. Download the project your computer.
+1. Download the project to your computer.
 
-2. Install all needed packages to your computer by typing in the terminal:
+2. Open the project and install all needed packages by typing in the terminal:
     `npm install`
 (it should install cypress and typescript)
 
